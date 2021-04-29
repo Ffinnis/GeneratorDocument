@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.min.css">
+    <title>Prikolchiki</title>
+</head>
+
+<body>
+    <div class="wrapper">
+        <form action="#" class="main-form">
+            <div class="person-details">
+                <div class="person__top-details">
+                    <label for="userName" class="name-label">Ваше имя:</label>
+                    <input id="input-userName" type="text" class="primary-input" name="userName" value=''>
+                    <label for="userLastName" class="name-label">Ваша фамилия:</label>
+                    <input id="input-userSurname" type="text" class="primary-input" name="userLastName" value=''>
+                    <label for="userFName" class="name-label">Ваше отчество:</label>
+                    <input id="input-userFather" type="text" class="primary-input" name="userFName" value=''>
+                </div>
+                <div class="person__bottom-details">
+                    <label for="dateB" class="name-label">Ваша дата рождения:</label>
+                    <input type="date" id="date" class="primary-input" name="dateB" value=''>
+                </div>
+            </div>
+            <div class="selection-form">
+                <div class="selection-gender">
+                    <input type="radio" value="male" name="gender" id="male">
+                    <label for="male">Мужчина</label>
+                    <input type="radio" value="female" name="gender" id="female">
+                    <label for="female">Женщина</label>
+                </div>
+                <div class="selection-photo-scale">
+                    <input type="radio" value="scale__true" name="scale__toggle" id="scale__true">
+                    <label for="scale__true">Отражать по горизонтали</label>
+                    <input type="radio" value="scale__false" name="scale__toggle" id="scale__false">
+                    <label for="scale__false">Не отражать по горизонтали</label>
+                    <input type="radio" value="scale__random" name="scale__toggle" id="scale__random">
+                    <label for="scale__random">Рандомный выбор</label>
+                </div>
+            </div>
+            <button type="submit" class="create-button">
+                Создать документ
+            </button>
+        </form>
+        <div class="document">
+            <img src="img/background-document.png" alt="" class="background-image">
+            <div class="document-text">
+                <div class="document-header">
+                    <div class="left-title header-title">
+                        <h1>
+                            UKRAINE
+                        </h1>
+                        <p>
+                            PASSPORT OF THE CITIZEN OF UKRAINE
+                        </p>
+                    </div>
+                    <div class="main-img">
+                        <img width="42" height="61" src="img/ukraine.svg" alt="">
+                    </div>
+                    <div class="right-title header-title">
+                        <h1>
+                            UKRAINE
+                        </h1>
+                        <p>
+                            PASSPORT OF THE CITIZEN OF UKRAINE
+                        </p>
+                    </div>
+                </div>
+                <div class="item-document">
+                    <img width="86" height="53" src="img/item.webp" alt="">
+                </div>
+                <div class="person-face">
+                    <img class="person-face__image" src="img/person.webp" alt="">
+                </div>
+                <div class="userData">
+                    <div class="user-list">
+                        <div class="user-item">
+                            <div class="item-title">
+                                Surname/ Фамилия
+                            </div>
+                            <div id="document-surname" class="item-info">
+
+                            </div>
+                        </div>
+                        <div class="user-item">
+                            <div class="item-title">
+                                Name/ Имя
+                            </div>
+                            <div id="document-user" class="item-info">
+
+                            </div>
+                        </div>
+                        <div class="user-item">
+                            <div class="item-title">
+                                Patronymic/ Отчество
+                            </div>
+                            <div id="patronymic" class="item-info">
+
+                            </div>
+                        </div>
+                        <div class="double-column">
+                            <div class="first-column">
+                                <div class="column-item">
+                                    <div class="sex-title item-title">
+                                        Sex
+                                    </div>
+                                    <div class="sex-label item-info" id="sex">
+
+                                    </div>
+                                </div>
+                                <div class="column-item">
+                                    <div class="date-title item-title">
+                                        Date of Birth
+                                    </div>
+                                    <div class="date-label item-info" id="date_label">
+
+                                    </div>
+                                </div>
+                                <div class="column-item">
+                                    <div class="date-title item-title">
+                                        Date of Expiry
+                                    </div>
+                                    <div class="date-label item-info" id="expired_data">
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="second-column">
+                                <div class="column-item">
+                                    <div class="date-title item-title">
+                                        Nationality
+                                    </div>
+                                    <div class="date-label item-info" id="nationality">
+                                        UKRAINE
+                                    </div>
+                                </div>
+                                <div class="column-item">
+                                    <div class="date-title item-title">
+                                        Record number
+                                    </div>
+                                    <div class="date-label item-info" id="record_data">
+
+                                    </div>
+                                </div>
+                                <div class="column-item">
+                                    <div class="date-title item-title">
+                                        Document number
+                                    </div>
+                                    <div class="date-label item-info" id="document_data">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
