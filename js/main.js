@@ -1,10 +1,19 @@
+var translite = {"Ё":"Yo","Й":"I","Ц":"Ts","У":"U","К":"K","Е":"E","Н":"N","Г":"G","Ш":"Sh","Щ":"Sch","З":"Z","Х":"H","Ъ":"'","ё":"yo","й":"i","ц":"ts","у":"u","к":"k","е":"e","н":"n","г":"g","ш":"sh","щ":"sch","з":"z","х":"h","ъ":"'","Ф":"F","Ы":"I","В":"V","А":"А","П":"P","Р":"R","О":"O","Л":"L","Д":"D","Ж":"Zh","Э":"E","ф":"f","ы":"i","в":"v","а":"a","п":"p","р":"r","о":"o","л":"l","д":"d","ж":"zh","э":"e","Я":"Ya","Ч":"Ch","С":"S","М":"M","И":"I","Т":"T","Ь":"'","Б":"B","Ю":"Yu","я":"ya","ч":"ch","с":"s","м":"m","и":"i","т":"t","ь":"'","б":"b","ю":"yu"};
 
-let random_surnames = ['Сафронов', "Беликов", "Чивапчин"];
-let random_fathers = ['Кириллович', 'Максимович', 'Алексеевич'];
-let random_maleNames = ['Кирилл', 'Максим', 'Алексей'];
-let random_femaleNames = ['Юлиана', 'Анна', 'Таисия'];
+function transliterate(word){
+  return word.split('').map(function (char) { 
+    return translite[char] || char; 
+  }).join("");
+}
 
-function check_gender() {
+
+
+let random_surnames = ['Сафронов', "Беликов", "Чивапчин", 'Иванов', 'Алеексеев', 'Смирнов'];
+let random_maleNames = ['Кирилл', 'Максим', 'Алексей', 'Андрей', 'Мефодий', 'Вячеслав', 'Саввелий', 'Анатолий'];
+let random_femaleNames = ['Юлиана', 'Анна', 'Таисия', 'Анастасия', 'Лариса', 'Юлия'];
+
+
+async function check_gender() {
     input_name = document.querySelector('#input-userName').value
     input_surname = document.querySelector('#input-userSurname').value
     input_father = document.querySelector('#input-userFather').value
@@ -14,44 +23,178 @@ function check_gender() {
     var random_maleName = random_maleNames[getRandomInt(0, random_maleNames.length)]
     var random_femaleName = random_femaleNames[getRandomInt(0, random_femaleNames.length)]
     var random_surname = random_surnames[getRandomInt(0, random_surnames.length)]
-    var random_father = random_fathers[getRandomInt(0, random_fathers.length)]
-    gender = document.getElementsByName('gender');
-    sex = document.querySelector('#sex');   
+    var trans_name = document.querySelector('#document-transleUser')
+    var trans_surname = document.querySelector('#document-transleSurname')
+    //var random_father = random_fathers[getRandomInt(0, random_fathers.length)]
+    var random_father = random_maleNames[getRandomInt(0, random_maleNames.length)];
+    fatherEnd = random_father.slice(random_father.length-2, random_father.length);
+    fatherRoot = random_father.slice(0, random_father.length-2);
+    const gender = document.getElementsByName('gender');
+    const sex = document.querySelector('#sex');   
 
     for(let i = 0;i<gender.length;i++){
         if(gender[i].checked) {
             if(gender[i].value === 'male') {
+                var genderEnd = "ич"
+    switch (fatherEnd){
+        case "ий": random_father = fatherRoot+"ьев"; break;
+        case "ов": random_father = fatherRoot+"ов"; break;
+        case "ль": random_father = fatherRoot+"льев"; break;
+        case "ма": random_father = fatherRoot+"мов"; break;
+        case "ей": random_father = fatherRoot+"еев"; break;
+        case "ва": random_father = fatherRoot+"вов"; break;
+        case "ья": random_father = fatherRoot+"ь"; break;
+        case "ай": random_father = fatherRoot+"ев"; break;
+        case "ел": random_father = fatherRoot+"ельев"; break;		
+        default: random_father +="ов"; break;
+    }
                 sex.innerHTML = 'M'
                 if(!input_name) {
                     name_label.innerHTML = random_maleName
+                    trans_name.innerHTML = transliterate(random_maleName)
                 } else{
                     name_label.innerHTML = input_name
+                    trans_name.innerHTML = transliterate(input_name)
+                }
+                if(!input_surname) {
+                    surname_label.innerHTML = random_surname
+                    trans_surname.innerHTML = transliterate(random_surname)
+                } else{
+                    surname_label.innerHTML = input_surname
+                    trans_surname.innerHTML = transliterate(input_surname)
+                }
+                if(!input_father) {
+                    father_label.innerHTML = random_father+genderEnd
+                } else{
+                    father_label.innerHTML = input_father
                 }
             } else{
+                
                 sex.innerHTML = 'F'
+                var genderEnd = "на"
+
+    switch (fatherEnd){
+        case "ий": random_father = fatherRoot+"ьев"; break;
+        case "ов": random_father = fatherRoot+"ов"; break;
+        case "ль": random_father = fatherRoot+"льев"; break;
+        case "ма": random_father = fatherRoot+"мов"; break;
+        case "ей": random_father = fatherRoot+"еев"; break;
+        case "ва": random_father = fatherRoot+"вов"; break;
+        case "ья": random_father = fatherRoot+"ь"; break;
+        case "ай": random_father = fatherRoot+"ев"; break;
+        case "ел": random_father = fatherRoot+"ельев"; break;		
+        default: random_father +="ов"; break;
+    }
+
                 if(!input_name) {
                     name_label.innerHTML = random_femaleName
+                    trans_name.innerHTML = transliterate(random_femaleName)
                 } else{
                     name_label.innerHTML = input_name
+                    trans_name.innerHTML = transliterate(input_name)
+                }
+                if(!input_surname) {
+                    surname_label.innerHTML = random_surname+'а'
+                    trans_surname.innerHTML = transliterate(random_surname+'a')
+                } else{
+                    surname_label.innerHTML = input_surname
+                    trans_surname.innerHTML = transliterate(input_surname)
+                }
+                if(!input_father) {
+                    father_label.innerHTML = random_father+genderEnd
+                } else{
+                    father_label.innerHTML = input_father
                 }
             }
         } 
     }
     if(!gender[0].checked & !gender[1].checked) {
-        random_gender = getRandomInt(0,2);
+        let random_gender = getRandomInt(0,2);
         if(random_gender === 0) {
+            const Murl = "https://ffinnis.github.io/GeneratorDocument/Mphotos.json"
+                    await fetch(Murl)
+                    .then((resp) => resp.json())
+                    .then(function(data) {
+                        let Mrandom_id = getRandomInt(0, data.length)
+                        let photo_container = document.querySelector('.person-face__image')
+                        let random_male_photo = data[Mrandom_id].url
+                        photo_container.setAttribute('src', `${random_male_photo}`)     
+                    })
             sex.innerHTML = 'M'
+            var genderEnd = "ич"
+    switch (fatherEnd){
+        case "ий": random_father = fatherRoot+"ьев"; break;
+        case "ов": random_father = fatherRoot+"ов"; break;
+        case "ль": random_father = fatherRoot+"льев"; break;
+        case "ма": random_father = fatherRoot+"мов"; break;
+        case "ей": random_father = fatherRoot+"еев"; break;
+        case "ва": random_father = fatherRoot+"вов"; break;
+        case "ья": random_father = fatherRoot+"ь"; break;
+        case "ай": random_father = fatherRoot+"ев"; break;
+        case "ел": random_father = fatherRoot+"ельев"; break;		
+        default: random_father +="ов"; break;
+    }
             if(!input_name) {
                 name_label.innerHTML = random_maleName
+                trans_name.innerHTML = transliterate(random_maleName)
             } else{
                 name_label.innerHTML = input_name
+                trans_name.innerHTML = transliterate(input_name)
+            }
+            if(!input_surname) {
+                surname_label.innerHTML = random_surname 
+                trans_surname.innerHTML = transliterate(random_surname)
+            } else{
+                surname_label.innerHTML = input_surname
+                trans_surname.innerHTML = transliterate(input_surname)
+            }
+            if(!input_father) {
+                father_label.innerHTML = random_father+genderEnd
+            } else{
+                father_label.innerHTML = input_father
             }
         } else{
+            const Furl = "https://ffinnis.github.io/GeneratorDocument/Fphotos.json"
+                    await fetch(Furl)
+                    .then((resp) => resp.json())
+                    .then(function(data) {
+                        let random_id = getRandomInt(0, data.length)
+                        let photo_container = document.querySelector('.person-face__image')
+                        let random_female_photo = data[random_id].url
+                        photo_container.setAttribute('src', `${random_female_photo}`)     
+                    })
             sex.innerHTML = 'F'
+            var genderEnd = "на"
+    switch (fatherEnd){
+        case "ий": random_father = fatherRoot+"ьев"; break;
+        case "ов": random_father = fatherRoot+"ов"; break;
+        case "ль": random_father = fatherRoot+"льев"; break;
+        case "ма": random_father = fatherRoot+"мов"; break;
+        case "ей": random_father = fatherRoot+"еев"; break;
+        case "ва": random_father = fatherRoot+"вов"; break;
+        case "ья": random_father = fatherRoot+"ь"; break;
+        case "ай": random_father = fatherRoot+"ев"; break;
+        case "ел": random_father = fatherRoot+"ельев"; break;		
+        default: random_father +="ов"; break;
+    }
             if(!input_name) {
                 name_label.innerHTML = random_femaleName
+                trans_name.innerHTML = transliterate(random_femaleName)
             } else{
                 name_label.innerHTML = input_name
+                trans_name.innerHTML = transliterate(input_name)
+            }
+            if(!input_surname) {
+                surname_label.innerHTML = random_surname+'а'
+                trans_surname.innerHTML = transliterate(random_surname+'a')
+            } else{
+                surname_label.innerHTML = input_surname
+                trans_surname.innerHTML = transliterate(input_surname)
+            }
+            if(!input_father) {
+                father_label.innerHTML = random_father+genderEnd
+            } else{
+                father_label.innerHTML = input_father
             }
         }
     }
@@ -129,19 +272,85 @@ function check_date() {
     expiry.innerHTML = `${exp_day} ${exp_month} ${exp_year}`
 }
 
-function getInput() {
+async function getInput() {
+    async function signs() {   
+        const url = "https://ffinnis.github.io/GeneratorDocument/signs.json"
+        await fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data) {
+            let random_sign_id = getRandomInt(0, data.length)
+            let user_sign = document.querySelector('#user_sign')
+            let random_sign = data[random_sign_id].url
+            user_sign.setAttribute('src', `${random_sign}`)
+        })
+        
+    }
 
+    async function backgrounds() {
+        const url = "https://ffinnis.github.io/GeneratorDocument/backgrounds.json"
+        await fetch(url)
+        .then((resp) => resp.json())
+        .then(function(data) {
+            let random_background_id = getRandomInt(0, data.length)
+            let user_background = document.querySelector('#person_background')
+            let random_background = data[random_background_id].url
+            user_background.setAttribute('src', `${random_background}`)
+            
+        })
+        
+    }
 
-
+    async function check_face() {
+        const gender = document.getElementsByName('gender');
+        const sex = document.querySelector('#sex');
+        for(let i = 0;i<gender.length;i++){
+            if(gender[i].checked) {
+                if(gender[i].value === 'female') {
+                    const Furl = "https://ffinnis.github.io/GeneratorDocument/Fphotos.json"
+                    await fetch(Furl)
+                    .then((resp) => resp.json())
+                    .then(function(data) {
+                        let random_id = getRandomInt(0, data.length)
+                        let photo_container = document.querySelector('.person-face__image')
+                        let random_female_photo = data[random_id].url
+                        photo_container.setAttribute('src', `${random_female_photo}`)     
+                    })
+                } else{
+                    const Murl = "https://ffinnis.github.io/GeneratorDocument/Mphotos.json"
+                    await fetch(Murl)
+                    .then((resp) => resp.json())
+                    .then(function(data) {
+                        let Mrandom_id = getRandomInt(0, data.length)
+                        let photo_container = document.querySelector('.person-face__image')
+                        let random_male_photo = data[Mrandom_id].url
+                        photo_container.setAttribute('src', `${random_male_photo}`)     
+                    })
+                }
+            }
+        }
+        
+    }
     
     
-    
-
+    await backgrounds()
+    await check_face()
+    await signs()
     check_gender()
     check_date()
     random_document()
     check_scale()
+    canvasBtn = document.querySelector('#make_canvas')
+    canvas_document = document.querySelector('.document')
+    photo_container = document.querySelector('.complete-photo')
+    canvasBtn.addEventListener('click', () => {
+        html2canvas(canvas_document, { logging: true, letterRendering: 1, allowTaint: false, useCORS: true } ).then(canvas => { 
+            photo_container.appendChild(canvas)
+        })
+        document_main.classList.remove('active')
+    })
 }
+
+
 
 form = document.querySelector('.main-form');
 document_main = document.querySelector('.document')
@@ -153,3 +362,6 @@ form.addEventListener('submit', (event) => {
 
     getInput()
 })
+
+
+
