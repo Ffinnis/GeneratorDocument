@@ -49,122 +49,92 @@
                 Создать документ
             </button>
         </form>
+        <button id="make_canvas">
+            Скомпилировать документ
+        </button>
         <div class="document">
-            <img src="img/background-document.png" alt="" class="background-image">
+            <img src="img/ukraina.png" alt="" id="person_background" class="background-image">
             <div class="document-text">
                 <div class="document-header">
-                    <div class="left-title header-title">
-                        <h1>
-                            UKRAINE
-                        </h1>
-                        <p>
-                            PASSPORT OF THE CITIZEN OF UKRAINE
-                        </p>
+                    <div class="person-face">
+                        <img class="person-face__image" src="img/person.webp" alt="">
                     </div>
-                    <div class="main-img">
-                        <img width="42" height="61" src="img/ukraine.svg" alt="">
-                    </div>
-                    <div class="right-title header-title">
-                        <h1>
-                            UKRAINE
-                        </h1>
-                        <p>
-                            PASSPORT OF THE CITIZEN OF UKRAINE
-                        </p>
-                    </div>
-                </div>
-                <div class="item-document">
-                    <img width="86" height="53" src="img/item.webp" alt="">
-                </div>
-                <div class="person-face">
-                    <img class="person-face__image" src="img/person.webp" alt="">
-                </div>
-                <div class="userData">
-                    <div class="user-list">
-                        <div class="user-item">
-                            <div class="item-title">
-                                Surname/ Фамилия
-                            </div>
-                            <div id="document-surname" class="item-info">
+                    <div class="userData">
+                        <div class="user-list">
+                            <div class="user-item">
+                                <div id="document-surname" class="item-info">
 
+                                </div>
+                                <div id="document-transleSurname" class="item-info translate_info">
+
+                                </div>
+                            </div>
+                            <div class="user-item">
+                                <div id="document-user" class="item-info">
+
+                                </div>
+                                <div id="document-transleUser" class="item-info translate_info">
+
+                                </div>
+                            </div>
+                            <div class="user-item">
+
+                                <div id="patronymic" class="item-info">
+
+                                </div>
+                            </div>
+                            <div class="double-column">
+                                <div class="first-column">
+                                    <div class="column-item">
+
+                                        <div class="sex-label item-info" id="sex">
+
+                                        </div>
+                                    </div>
+                                    <div class="column-item">
+
+                                        <div class="date-label item-info" id="date_label">
+
+                                        </div>
+                                    </div>
+                                    <div class="column-item">
+
+                                        <div class="date-label item-info" id="expired_data">
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="second-column">
+                                    <div class="column-item">
+                                    </div>
+                                    <div class="column-item">
+
+                                        <div class="date-label item-info" id="record_data">
+
+                                        </div>
+                                    </div>
+                                    <div class="column-item">
+
+                                        <div class="date-label item-info" id="document_data">
+
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="user-item">
-                            <div class="item-title">
-                                Name/ Имя
-                            </div>
-                            <div id="document-user" class="item-info">
-
-                            </div>
-                        </div>
-                        <div class="user-item">
-                            <div class="item-title">
-                                Patronymic/ Отчество
-                            </div>
-                            <div id="patronymic" class="item-info">
-
-                            </div>
-                        </div>
-                        <div class="double-column">
-                            <div class="first-column">
-                                <div class="column-item">
-                                    <div class="sex-title item-title">
-                                        Sex
-                                    </div>
-                                    <div class="sex-label item-info" id="sex">
-
-                                    </div>
-                                </div>
-                                <div class="column-item">
-                                    <div class="date-title item-title">
-                                        Date of Birth
-                                    </div>
-                                    <div class="date-label item-info" id="date_label">
-
-                                    </div>
-                                </div>
-                                <div class="column-item">
-                                    <div class="date-title item-title">
-                                        Date of Expiry
-                                    </div>
-                                    <div class="date-label item-info" id="expired_data">
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="second-column">
-                                <div class="column-item">
-                                    <div class="date-title item-title">
-                                        Nationality
-                                    </div>
-                                    <div class="date-label item-info" id="nationality">
-                                        UKRAINE
-                                    </div>
-                                </div>
-                                <div class="column-item">
-                                    <div class="date-title item-title">
-                                        Record number
-                                    </div>
-                                    <div class="date-label item-info" id="record_data">
-
-                                    </div>
-                                </div>
-                                <div class="column-item">
-                                    <div class="date-title item-title">
-                                        Document number
-                                    </div>
-                                    <div class="date-label item-info" id="document_data">
-
-                                    </div>
-                                </div>
-                            </div>
+                        <div class="user-sign">
+                            <img id="user_sign" src="#" alt="">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <script src="js/main.js"></script>
+        <div class="complete-photo">
+
+        </div>
+        <script src="js/html2canvas.min.js">
+        </script>
+        <script src="js/main.js"></script>
 </body>
 
 </html>

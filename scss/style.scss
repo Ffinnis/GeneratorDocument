@@ -20,8 +20,8 @@ body{
 }
 
 .document{
-    max-width: 1270px;
-    max-height: 700px;
+    width: 1270px;
+    height: 700px;
     position: relative;
     display: none;
     &.active{
@@ -65,18 +65,28 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
-    left: 65%;
-    top: 20px;
+    left: 26%;
+    top: 100px;
     .double-column{
         display: flex;
     }
     .user-item{
         display: flex;
         flex-direction: column;
+        &:nth-child(1){
+            margin-bottom: 25px;
+        }
+        &:nth-child(2){
+            margin-bottom: 22px;
+        }
+        &:nth-child(3){
+            margin-bottom: 15px;
+        }
     }
     .column-item{
         display: flex;
         flex-direction: column;
+        margin-bottom: 12px;
     }
     .item-title{
         font-size: 20px;
@@ -87,7 +97,10 @@ body{
         font-size: 30px;
     }
     .first-column{
-        margin: 0 20px 0 0;
+        margin: 0px 196px 0 0;
+    }
+    .second-column{
+        margin: 44px 0 0;
     }
 }
 
@@ -98,5 +111,29 @@ body{
     img{
         width: 400px;
     height: 400px;
+    }
+}
+
+.user-sign{
+    
+        position: relative;
+        left: 53%;
+        top: 30px;
+    
+}
+
+.translate_info{
+    margin: -16px 0 0 0;
+}
+
+.complete-photo{
+    max-width: 100%;
+    max-height: 10%;
+    margin: 30px 0 0 0;
+}
+
+@media (max-width: 1270px) {
+    .wrapper{
+        overflow-x: scroll;
     }
 }
