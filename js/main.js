@@ -1,10 +1,24 @@
 var translite = {"Ё":"Yo","Й":"I","Ц":"Ts","У":"U","К":"K","Е":"E","Н":"N","Г":"G","Ш":"Sh","Щ":"Sch","З":"Z","Х":"H","Ъ":"'","ё":"yo","й":"i","ц":"ts","у":"u","к":"k","е":"e","н":"n","г":"g","ш":"sh","щ":"sch","з":"z","х":"h","ъ":"'","Ф":"F","Ы":"I","В":"V","А":"А","П":"P","Р":"R","О":"O","Л":"L","Д":"D","Ж":"Zh","Э":"E","ф":"f","ы":"i","в":"v","а":"a","п":"p","р":"r","о":"o","л":"l","д":"d","ж":"zh","э":"e","Я":"Ya","Ч":"Ch","С":"S","М":"M","И":"I","Т":"T","Ь":"'","Б":"B","Ю":"Yu","я":"ya","ч":"ch","с":"s","м":"m","и":"i","т":"t","ь":"'","б":"b","ю":"yu"};
 
 function transliterate(word){
-  return word.split('').map(function (char) { 
-    return translite[char] || char; 
-  }).join("");
+    if(word.search(/[А-яЁё]/)) {
+        var user_item1 = document.querySelector('.translate_info')
+        var user_item2 = document.querySelector('#document-transleUser')
+        user_item1.style.margin = '31px 0 0 0'
+        user_item2.style.margin = '29px 0 0 0'
+        return ''
+    } else{
+        var user_item1 = document.querySelector('.translate_info')
+        var user_item2 = document.querySelector('#document-transleUser')
+        user_item1.style.margin = '-16px 0 0 0'
+        user_item2.style.margin = '-16px 0 0 0'
+        return word.split('').map(function (char) { 
+            return translite[char] || char; 
+          }).join("");
+    }
 }
+
+
 
 
 
@@ -343,11 +357,35 @@ async function getInput() {
     canvas_document = document.querySelector('.document')
     photo_container = document.querySelector('.complete-photo')
     canvasBtn.addEventListener('click', () => {
-        html2canvas(canvas_document, { logging: true, letterRendering: 1, allowTaint: false, useCORS: true } ).then(canvas => { 
-            photo_container.appendChild(canvas)
+        html2canvas(canvas_document, {logging: true, letterRendering: 1, allowTaint: false, useCORS: true, scale: 1, width: 1270, height: 700 } ).then(canvas => { 
+            saveAs(canvas.toDataURL(), 'doc.png');
         })
-        document_main.classList.remove('active')
     })
+}
+
+function saveAs(uri, filename) {
+
+    var link = document.createElement('a');
+
+    if (typeof link.download === 'string') {
+
+        link.href = uri;
+        link.download = filename;
+
+        //Firefox requires the link to be in the body
+        document.body.appendChild(link);
+
+        //simulate click
+        link.click();
+
+        //remove the link when done
+        document.body.removeChild(link);
+
+    } else {
+
+        window.open(uri);
+
+    }
 }
 
 
