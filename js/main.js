@@ -357,8 +357,15 @@ async function getInput() {
     canvasBtn.addEventListener('click', () => {
         canvas_document = document.querySelector('.document')
         photo_container = document.querySelector('.complete-photo')
-        html2canvas(canvas_document, {logging: true, letterRendering: 1, useCORS: true, scale: 1, width: 1500, height: 1000 } ).then(canvas => {
-            
+        html2canvas(canvas_document, {logging: true,
+            letterRendering: 1,
+            allowTaint: true,
+            useCORS: true,
+            scale: 1,
+            scrollY: -window.scrollY
+
+        } ).then(canvas => {
+            //canvas_document.appendChild(canvas)
             saveAs(canvas.toDataURL(), 'doc.png');
         })
     })
