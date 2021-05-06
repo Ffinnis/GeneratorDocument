@@ -8,9 +8,9 @@ body{
     overflow-x: hidden;
 }
 
-@media(max-width: 700px) {
+@media(max-width: 1500px) {
     .wrapper{
-        overflow-x: hidden;
+        overflow-x: scroll;
     }
 }
 
@@ -26,6 +26,7 @@ body{
     position: relative;
     display: none;
     height: 1000px;
+    width: 1500px;
     &.active{
         display: block;
     }
@@ -68,8 +69,8 @@ body{
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    position: relative;
-    left: 24%;
+    position: absolute;
+    left: 590px;
     top: 100px;
     .double-column{
         display: flex;
@@ -99,6 +100,7 @@ body{
     .item-info{
         font-weight: 700;
         font-size: 30px;
+        white-space: nowrap;
     }
     .first-column{
         margin: 0 261px 0 0;
@@ -112,8 +114,8 @@ body{
 
 .person-face{
     position: absolute;
-    left: 8%;
-    top: 38%;
+    left: 100px;
+    top: 264px;
     img{
         width: 400px;
     height: 400px;
@@ -121,13 +123,10 @@ body{
 }
 
 .user-sign{
-    
-        position: relative;
-        
-    left: 73%;
 
-        top: 30px;
-    
+    position: absolute;
+    top: 600px;
+    left: 790px;
 }
 
 .translate_info{
