@@ -21,8 +21,6 @@ body{
 }
 
 .document{
-    width: 1270px;
-    height: 700px;
     position: relative;
     display: none;
     &.active{
@@ -66,7 +64,7 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     position: relative;
-    left: 41%;
+    left: 24%;
     top: 100px;
     .double-column{
         display: flex;
