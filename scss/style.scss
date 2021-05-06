@@ -17,6 +17,7 @@ body{
 .wrapper{
     max-width: 1500px;
     margin: 0 auto;
+
 }
 
 .document{
@@ -97,17 +98,19 @@ body{
         font-size: 30px;
     }
     .first-column{
-        margin: 0px 261px 0 0;
+        margin: 0 261px 0 0;
     }
     .second-column{
         margin: 44px 0 0;
     }
 }
 
+
+
 .person-face{
     position: absolute;
-    left: 4%;
-    top: 25%;
+    left: 8%;
+    top: 38%;
     img{
         width: 400px;
     height: 400px;
@@ -139,4 +142,96 @@ body{
         overflow-x: scroll;
     }
 
+}
+
+.main-title{
+    text-align: center;
+}
+.primary-input{
+    border-radius: 7px;
+    border: 1px solid rgba(100,149,237,0.7);
+    outline: none;
+    width: 25%;
+    padding: 10px;
+    &:focus{
+        border: 2px solid rgba(100,149,237,1);
+        outline: none;
+    }
+}
+
+.name-label{
+    font-weight: 600;
+    font-size: 18px;
+
+}
+
+.person__top-details{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .name-label {
+        margin: 20px 0 0 0;
+    }
+}
+
+.person__bottom-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 0 0 0;
+}
+
+.selection-gender{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 0 0;
+    p{
+        margin: 0 8px 0 0;
+        font-weight: 600;
+        font-size: 18px;
+    }
+    label{
+        margin: 0 14px 0 4px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+}
+
+.selection-photo-scale{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 15px 0 0 0;
+    label{
+        margin: 0 14px 0 4px;
+        font-weight: 600;
+        font-size: 16px;
+    }
+}
+
+.btn-container{
+    display: flex;
+    justify-content: center;
+    .create-button{
+        padding: 10px 18px;
+        border: none;
+        border-radius: 6px;
+        background: linear-gradient(90deg, rgba(30,204,224,1) 15%, rgba(26,190,223,1) 100%);
+        font-weight: 600;
+        font-size: 22px;
+        color: #fff;
+        margin: 15px 0 0;
+    }
+    #make_canvas{
+        padding: 10px 18px;
+        border: none;
+        border-radius: 6px;
+        background: linear-gradient(90deg, rgba(30,204,224,1) 15%, rgba(26,190,223,1) 100%);
+        font-weight: 600;
+        font-size: 22px;
+        color: #fff;
+        margin: 20px 0 0;
+    }
 }
