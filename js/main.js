@@ -354,10 +354,10 @@ async function getInput() {
     random_document()
     check_scale()
     canvasBtn = document.querySelector('#make_canvas')
-    canvas_document = document.querySelector('.document')
-    photo_container = document.querySelector('.complete-photo')
     canvasBtn.addEventListener('click', () => {
-        html2canvas(canvas_document, {logging: true, letterRendering: 1, allowTaint: false, useCORS: true, scale: 1, width: 1500, height: 1000 } ).then(canvas => { 
+        canvas_document = document.querySelector('.document')
+        photo_container = document.querySelector('.complete-photo')
+        html2canvas(canvas_document, {logging: true, letterRendering: 1, useCORS: true, scale: 1, width: 1500, height: 1000 } ).then(canvas => {
             
             saveAs(canvas.toDataURL(), 'doc.png');
         })
