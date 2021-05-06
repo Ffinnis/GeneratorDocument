@@ -14,23 +14,29 @@
 
 <body>
     <div class="wrapper">
+        <h1 class="main-title">
+            Сервис по созданию шуточных документов
+        </h1>
         <form action="#" class="main-form">
             <div class="person-details">
                 <div class="person__top-details">
-                    <label for="userName" class="name-label">Ваше имя:</label>
+                    <label for="input-userName" class="name-label">Ваше имя: (Пусто = рандом)</label>
                     <input id="input-userName" type="text" class="primary-input" name="userName" value=''>
-                    <label for="userLastName" class="name-label">Ваша фамилия:</label>
+                    <label for="input-userSurname" class="name-label">Ваша фамилия: (Пусто = рандом)</label>
                     <input id="input-userSurname" type="text" class="primary-input" name="userLastName" value=''>
-                    <label for="userFName" class="name-label">Ваше отчество:</label>
+                    <label for="input-userFather" class="name-label">Ваше отчество: (Пусто = рандом)</label>
                     <input id="input-userFather" type="text" class="primary-input" name="userFName" value=''>
                 </div>
                 <div class="person__bottom-details">
-                    <label for="dateB" class="name-label">Ваша дата рождения:</label>
+                    <label for="date" class="name-label">Ваша дата рождения: (Пусто = рандом)</label>
                     <input type="date" id="date" class="primary-input" name="dateB" value=''>
                 </div>
             </div>
             <div class="selection-form">
                 <div class="selection-gender">
+                    <p>
+                        Выбор пола: (Пусто = рандом)
+                    </p>
                     <input type="radio" value="male" name="gender" id="male">
                     <label for="male">Мужчина</label>
                     <input type="radio" value="female" name="gender" id="female">
@@ -45,13 +51,18 @@
                     <label for="scale__random">Рандомный выбор</label>
                 </div>
             </div>
-            <button type="submit" class="create-button">
-                Создать документ
-            </button>
+            <div class="btn-container">
+                <button type="submit" class="create-button">
+                    Создать документ
+                </button>
+            </div>
+
         </form>
-        <button id="make_canvas">
-            Скомпилировать документ
-        </button>
+        <div class="btn-container">
+            <button id="make_canvas">
+                Скомпилировать документ
+            </button>
+        </div>
         <div class="document">
             <img src="#" alt="" id="person_background" class="background-image">
             <div class="document-text">
@@ -129,6 +140,7 @@
                 </div>
             </div>
         </div>
+    </div>
         <script src="js/html2canvas.min.js">
         </script>
         <script src="js/main.js"></script>
